@@ -1,0 +1,7 @@
+.container1{
+    display: block;
+    position: absolute;
+    z-index: 1; /* High z-index so it is on top of the page */
+    top: 50%;
+    right: 50%; /* or: left: 50%; */
+  }

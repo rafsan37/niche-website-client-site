@@ -1,0 +1,32 @@
+.banner{
+    height: 80%;
+    background-image: url(../../../img/banner/Banner.jpg);
+    background-position: center;
+    background-size: cover;
+    background-attachment: fixed;
+    padding-top: 15%;
+    padding-bottom: 12%;
+}
+.banner-highlights{
+   padding: 90px 0;
+   background: #1f374f80;
+   text-align: center;
+   color: #fff;
+   justify-content: space-around;
+}
+.explore-btn{
+    width: 120px;
+    padding: 8px 0;
+    outline: none !important;
+    border: 2px solid #fff;
+    border-radius: 50px;
+    background: transparent;
+    color: #fff;
+    margin-top: 20px;
+    cursor: pointer;  
+}
+.explore-btn:hover{
+    color: #fd6502;
+
+    background: rgba(12, 11, 11, 0.548);
+}
