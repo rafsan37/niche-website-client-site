@@ -31,10 +31,10 @@ const Dashboard = () => {
     <Nav className=" me-auto d-flex flex-column">
       <Nav.Link as = {Link} to="/home">Home</Nav.Link>
       <Nav.Link as = {Link} to={`${url}/myorder`}>My Order</Nav.Link>
+      <Nav.Link as = {Link} to={`${url}/reviews`}>Add Reviews</Nav.Link>
       <Nav.Link as = {Link} to={`${url}/pay`}>payment</Nav.Link>
      {
-       admin && <div>
-          <Nav.Link as = {Link} to={`${url}/reviews`}>Add Reviews</Nav.Link>
+       admin && <div>    
       <Nav.Link as = {Link} to={`${url}/addproduct`}>Add Product</Nav.Link>
       <Nav.Link as = {Link} to={`${url}/manageallorders`}>Manage Orders</Nav.Link>
       <Nav.Link as = {Link} to={`${url}/manageallproducts`}>Manage Products</Nav.Link>

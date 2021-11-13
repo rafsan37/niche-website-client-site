@@ -29,7 +29,6 @@ const Reviews = () => {
       <input className="bg-warning text- fw-bold" type="submit" />
     </form>
     
-    <ReactStars count={3}size={24}color="#ffd700"/> 
         </div>
     );
 };

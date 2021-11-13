@@ -28,7 +28,7 @@ const ManageAllOrders = () => {
     function cancel(id) {
       const confirmation = window.confirm('Are you sure to delete !')
       if(confirmation) {
-        fetch(`https://dry-basin-21190.herokuapp.com/delete/${id}`,{
+        fetch(`https://dry-basin-21190.herokuapp.com/purchases/${id}`,{
         method: "delete",
       })
       .then(res=> res.json())
@@ -70,9 +70,9 @@ const ManageAllOrders = () => {
       <td className="py-4">{order.model}</td>
       <td className="py-4  px-3">{order.price} Tk</td>
       <td className="py-4 text-warning  fw-bold">{order.Status}</td>
-      <td className="py-3"><button onClick={()=> handele(order._id)} className="btn btn-success rounded"    
+      <td className="py-0"><button onClick={()=> handele(order._id)} className="btn btn-success rounded"    
       >Confirm</button></td>
-      <td className="py-3"><button
+      <td className="py-0"><button
       onClick={()=> cancel(order._id)}
       className="btn  btn-danger rounded">Cancel</button></td>
     </tr> 
