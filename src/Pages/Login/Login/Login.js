@@ -7,23 +7,27 @@ import { NavLink, useLocation, useHistory } from 'react-router-dom';
 import useAuth from '../../../Hooks/useAuth';
 import "./login.css"
 import logo from '../../../img/icon/logo.png'
+import Header from '../../Shared/Header/Header';
+import Footer from '../../Shared/Footer/Footer';
 
 const Login = () => {
-    const {singInUsingGoogle, signInWithEmail,setUser,setError, getUserPassword, getUserEmail, error } = useAuth();
+    const {singInUsingGoogle, saveUser, signInWithEmail,setUser,setError, getUserPassword, getUserEmail, user, error } = useAuth();
     const location = useLocation();
     const history = useHistory();
 
     const redirect_uri = location.state?.from || '/home';
     const handleGoogleLogin = () => {
         singInUsingGoogle()
+        
         .then(result => {
+            saveUser(user.email, user.displayName, 'PUT');
             history.push(redirect_uri);
         });
     }
     return (
 
-
-
+    <>
+        <Header></Header>
         <Container className="d-flex align-items-center justify-content-center my-5">
 
             <Form className="border p-5 bg-color">
@@ -71,54 +75,8 @@ const Login = () => {
                 
             </Form>
         </Container>
-
-
-
-
-
-//         < className="container text-center">
-
-//             <div className="my-5">
-//             <div className="login-form">
-//     <form>
-//         <h2 className="text-center my-3">Log in</h2>   
-//         <div className="form-group">
-//         	<div className="input-group my-3">
-//                 <div className="input-group-prepend">
-//                     <span className="input-group-text">
-//                         <span className="fa fa-user py-1"></span>
-//                     </span>                    
-//                 </div>
-//                       <input onBlur={getUserEmail} type="text" className="form-control" name="useremail" placeholder="Enter your Email" required="required"/>	
-//             	</div>
-//         </div>
-// 		<div className="form-group">
-//             <div className="input-group ">
-//                 <div className="input-group-prepend">
-//                     <span className="input-group-text">
-//                         <i className="fa fa-lock py-1"></i>
-//                     </span>                    
-//                 </div>
-//                 <input onBlur={getUserPassword} type="password" className="form-control" name="password" placeholder="Password" required="required"/>				
-//             </div>
-//         </div>        
-//         <div className="form-group">
-//             <button type="submit"  className="btn btn-primary login-btn btn-block">Log in</button>
-//         </div>
-//         <div className="clearfix">
-//             <label className="float-left form-check-label"><input type="checkbox"/> Remember me</label>
-//             <NavLink to="#" className="float-right">Forgot Password?</NavLink>
-//         </div>
-// 		<div className="or-seperator"><i>or</i></div>
-//         <p className="text-center">Login with Google</p>
-//         <div className="text-center social-btn">
-//         <button onClick={handleGoogleLogin} className="btn btn-danger"><i className="fa fa-google"></i>&nbsp; Google</button>
-			
-//         </div>
-//     </form>
-    
-// </div>
-//     </div>
+        <Footer></Footer>
+        </>
 
     );
 };

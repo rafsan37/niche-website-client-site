@@ -1,19 +1,17 @@
 import React, { useEffect, useState } from 'react';
-import Footer from '../../Shared/Footer/Footer';
-import Header from '../../Shared/Header/Header';
-import Product from '../Product/Product';
-import './Products.css'
 
-const Products = () => {
+import Product from '../Product/Product';
+
+
+const NewProducts = () => {
     const [products, setProducts] = useState([]);
     useEffect(() => {
         fetch('https://dry-basin-21190.herokuapp.com/products')
         .then(res =>  res.json())
-        .then(data => setProducts(data));
+        .then(data => setProducts(data.slice(0 , 6)));
     },[])
     return (
-        <div className="products">
-            <Header></Header>
+        <div className="products">     
             <h1 className="text-center my-5">New Product</h1><br></br>
             <div className="container">
                 <div className="row">
@@ -24,9 +22,8 @@ const Products = () => {
             }
                 </div>
             </div>
-            <Footer></Footer>
         </div>
     );
 };
 
-export default Products;
+export default NewProducts;

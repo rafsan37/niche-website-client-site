@@ -1,0 +1,21 @@
+.addservice form{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.addservice form input,textarea{
+    width: 45%;
+    margin-bottom: 10px;
+    padding: 10px;
+    border-radius: 5px;
+}
+.addservice textarea{
+    height: 100px;
+}
+.addservice h2{
+    color: rgb(81, 164, 212);
+}
+.addservice h4, h5{
+    color: rgb(141, 177, 58);
+}

@@ -10,6 +10,8 @@ import {
 } from "react-bootstrap";
 import { NavLink, useLocation, useHistory } from 'react-router-dom';
 import useAuth from '../../../Hooks/useAuth';
+import Footer from "../../Shared/Footer/Footer";
+import Header from "../../Shared/Header/Header";
 
 const Signup = () => {
     const {error, setError, getUserPassword, getUserEmail , handleSubmitForm, singInUsingGoogle, getUserName, user, setUser} = useAuth();
@@ -20,6 +22,7 @@ const Signup = () => {
 
     return (
         <div>
+            <Header></Header>
            
            <Container className="d-flex align-items-center justify-content-center my-5">
 
@@ -92,7 +95,7 @@ const Signup = () => {
                 </p>
             </Form>
         </Container>
-
+        <Footer></Footer>
         </div>
     );
 };

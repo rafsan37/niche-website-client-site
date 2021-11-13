@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import "./Banner.css"
 
 const Banner = () => {
@@ -13,7 +14,7 @@ const Banner = () => {
                                 <p>Buy your cars before 21st november and avail 30% flat discount</p> 
                             </div>
                             <div className="col-md-4 ">
-                             <button type='button' className="explore-btn">Explore</button>
+                             <Link to="/explore"><button type='button' className="explore-btn">Explore</button></Link>
                             </div>
                         </div>
                     </div>

@@ -14,8 +14,8 @@ const Product = ({product}) => {
                     <p className="text-center fs-3 mt-2">{description.slice(0, 74)} </p>
                     <p className="text-center fs-3 mt-2">Price: {price} Tk </p>
                     <div className="text-center">
-                         <Link to={`/details/${_id}`}>
-                         <button className="custom-btn btn-5"><span>Book Now</span></button>
+                         <Link to={`/purchase/${_id}`}>
+                         <button className="custom-btn btn-5"><span>Purchase Now</span></button>
                         </Link>
                     </div>
                 </div>

@@ -10,13 +10,13 @@ const useFirebase = () =>{
     const [email, SetEmail] = useState(" ");
     const [password, SetPassword] = useState(" ");
     const [name, SetName] = useState(" ");
+    const [admin, setAdmin] = useState(false);
     
 
     
     const auth = getAuth();
 // google login
     const singInUsingGoogle = () =>{
-       
         const googleProvider = new GoogleAuthProvider();
       return signInWithPopup(auth, googleProvider)
          
@@ -45,6 +45,12 @@ const useFirebase = () =>{
         });
         return () => unsubscribed
     }, []);
+    //get admin
+    useEffect(() => {
+        fetch(`https://dry-basin-21190.herokuapp.com/users/${user.email}`)
+            .then(res => res.json())
+            .then(data => setAdmin(data.admin))
+    }, [user.email])
  // get user name
     const getUserName = (event) => {
         SetName(event.target.value);
@@ -74,14 +80,13 @@ const handleSubmitForm = event => {
         if (password.length < 6) {
             setError("password should have 6 character")
             return;
-        } if (!/(?=.*[A-Z].*[A-Z])/.test(password)) {
-            setError("password must contain 2 upper case")
-            return;
         }
         createUserWithEmailAndPassword(auth, email, password)
             .then(result => {
                 setUser(result.user);
                setUserName();
+               // save user to the database
+               saveUser(email, name, 'POST');
                setError('')
             })
             .catch((err) => {
@@ -94,9 +99,22 @@ const handleSubmitForm = event => {
       return  signInWithEmailAndPassword(auth, email, password)
             
     }
+   // save new user
+   const saveUser = (email, displayName, method) => {
+    const user = { email, displayName };
+    fetch('https://dry-basin-21190.herokuapp.com/users', {
+        method: method,
+        headers: {
+            'content-type': 'application/json'
+        },
+        body: JSON.stringify(user)
+    })
+        .then()
+}
     return{
         isLoading,
         user,
+        admin,
         singInUsingGoogle,
         logOut,
         error,
@@ -106,7 +124,8 @@ const handleSubmitForm = event => {
         signInWithEmail,
         getUserName
         ,setUser,
-        setError
+        setError,
+        saveUser
         
         
     }
